@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151223153411) do
+ActiveRecord::Schema.define(version: 20151223171242) do
+
+  create_table "auth_tokens", force: :cascade do |t|
+    t.string   "email"
+    t.string   "token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_auth_tokens_on_email"
+    t.index ["token"], name: "index_auth_tokens_on_token"
+  end
 
   create_table "companies", force: :cascade do |t|
     t.string   "name"
