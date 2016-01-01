@@ -1,0 +1,71 @@
+{{#link-to "companies.edit" model}}Edit{{/link-to}}
+|
+<a href="#" {{action "delete" model}}>Delete</a>
+
+<h3>{{model.name}}</h3>
+
+<p>
+  {{model.formattedAddress}}
+</p>
+
+<hr>
+
+<p>
+  <strong>Phone:</strong>
+  {{model.phone}}
+</p>
+
+<p>
+  <strong>Email:</strong>
+  {{model.email}}
+</p>
+
+<p>
+  <strong>Website:</strong>
+  {{model.website}}
+</p>
+
+<hr>
+
+<p>
+  <strong>External ID:</strong>
+  {{model.customerId}}
+</p>
+
+<p>
+  <strong>Additional Info:</strong>
+  {{model.additionalInfo}}
+</p>
+
+<hr>
+
+<h4>Contacts</h4>
+
+<table class="table table-striped table-sm">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Title</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each model.contacts as |contact|}}
+      <tr>
+        <td>{{contact.family_name}}, {{contact.given_names}}</td>
+        <td>{{contact.title}}</td>
+        <td>{{contact.phone}}</td>
+        <td>{{contact.email}}</td>
+        <td>{{#link-to 'companies.show' contact}}Details{{/link-to}}</td>
+      </tr>
+    {{else}}
+      <tr>
+        <td colspan="5" style="text-align: center; font-style: italic">
+          This company has no contacts.
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

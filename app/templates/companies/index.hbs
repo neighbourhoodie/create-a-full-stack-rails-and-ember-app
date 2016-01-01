@@ -1,0 +1,34 @@
+{{#link-to "companies.new"}}New Company{{/link-to}}
+
+<table class="table table-striped table-sm">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th># Contacts</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each model as |company|}}
+      <tr>
+        <td>{{company.name}}</td>
+        <td>{{company.phone}}</td>
+        <td>{{company.email}}</td>
+        <td>{{company.contacts.length}}</td>
+        <td>
+          {{#link-to 'companies.show' company}}Details{{/link-to}}
+          |
+          {{#link-to 'companies.edit' company}}Edit{{/link-to}}
+        </td>
+      </tr>
+    {{else}}
+      <tr>
+        <td colspan="5" style="text-align: center; font-style: italic">
+          You have no companies yet.
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
