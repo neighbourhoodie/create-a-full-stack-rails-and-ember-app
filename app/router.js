@@ -12,6 +12,13 @@ Router.map(function() {
     this.route('edit', { path: ':company_id/edit' });
     this.route('new');
   });
+
+  this.route('contacts', function () {
+    this.route('index', { path: '/' });
+    this.route('show', { path: ':contact_id' });
+    this.route('edit', { path: ':contact_id/edit' });
+    this.route('new');
+  });
 });
 
 export default Router;

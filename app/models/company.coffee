@@ -12,7 +12,7 @@ Company = DS.Model.extend
   contacts: DS.hasMany 'contact'
 
   formattedAddress: (->
-    return "" if @get('address') == null
+    return "" unless @get('address')
     new Ember.Handlebars.SafeString @get('address').replace /\n/g, '<br>'
   ).property('address')
 

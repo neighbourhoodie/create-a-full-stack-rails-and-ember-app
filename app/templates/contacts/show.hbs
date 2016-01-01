@@ -1,9 +1,17 @@
 <p class="pull-sm-right">
-  {{#link-to "companies.edit" model class="btn btn-sm btn-primary"}}Edit{{/link-to}}
+  {{#link-to "contacts.edit" model.id class="btn btn-sm btn-primary"}}Edit{{/link-to}}
   <a class="btn btn-sm btn-danger" href="#" {{action "delete" model}}>Delete</a>
 </p>
 
-<h3>{{model.name}}</h3>
+<h3>{{model.familyName}}, {{model.givenNames}}</h3>
+{{#if model.company}}
+  <p>
+    <em>{{model.title}}</em>
+    at {{#link-to 'companies.show' model.company}}{{model.company.name}}{{/link-to}}
+  </p>
+{{/if}}
+
+<hr style="clear:both">
 
 <div class="row">
   {{#if model.formattedAddress}}
@@ -32,45 +40,16 @@
   </div>
 </div>
 
-<hr>
-
+{{#if model.customerId}}
 <p>
   <strong>External ID:</strong>
   {{model.customerId}}
 </p>
+{{/if}}
 
+{{#if model.additionalInfo}}
 <p>
   <strong>Additional Info:</strong>
   {{model.additionalInfo}}
 </p>
-
-<hr>
-
-<h4>Contacts</h4>
-
-<table class="table table-striped table-sm">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Title</th>
-      <th>Phone</th>
-      <th>Email</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each model.contacts as |contact|}}
-      <tr>
-        <td>{{#link-to 'contacts.show' contact.id}}{{contact.familyName}}, {{contact.givenNames}}{{/link-to}}</td>
-        <td>{{contact.title}}</td>
-        <td>{{contact.phone}}</td>
-        <td>{{contact.email}}</td>
-      </tr>
-    {{else}}
-      <tr>
-        <td colspan="5" style="text-align: center; font-style: italic">
-          This company has no contacts.
-        </td>
-      </tr>
-    {{/each}}
-  </tbody>
-</table>
+{{/if}}
