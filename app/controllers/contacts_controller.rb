@@ -29,11 +29,11 @@ class ContactsController < ApplicationController
 
   # PATCH/PUT /contacts/1
   def update
-    if @contact.update(contact_params)
-      @contact.company = relationship_params[:company] if relationship_params[:company]
-      @contact.offers = relationship_params[:offers] if relationship_params[:offers]
-      @contact.projects = relationship_params[:projects] if relationship_params[:projects]
+    @contact.company = relationship_params[:company] if relationship_params.has_key? :company
+    @contact.offers = relationship_params[:offers] if relationship_params[:offers]
+    @contact.projects = relationship_params[:projects] if relationship_params[:projects]
 
+    if @contact.update(contact_params)
       render json: @contact
     else
       render json: @contact.errors, status: :unprocessable_entity

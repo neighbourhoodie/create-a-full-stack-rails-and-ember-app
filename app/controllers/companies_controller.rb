@@ -27,9 +27,9 @@ class CompaniesController < ApplicationController
 
   # PATCH/PUT /companies/1
   def update
+    @company.contacts = relationship_params[:contacts] if relationship_params[:contacts]
+
     if @company.update(company_params)
-      @company.contacts = relationship_params[:contacts] if relationship_params[:contacts]
-      
       render json: @company
     else
       render json: { errors: [@company.errors] }, status: :unprocessable_entity

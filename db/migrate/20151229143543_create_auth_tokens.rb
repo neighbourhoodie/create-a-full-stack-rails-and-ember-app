@@ -6,7 +6,5 @@ class CreateAuthTokens < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
-    add_index :auth_tokens, :email
-    add_index :auth_tokens, :token
   end
 end

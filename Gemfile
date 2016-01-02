@@ -34,4 +34,4 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'google-api-client'
+gem 'google-api-client', '~> 0.9.pre4'

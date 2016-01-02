@@ -11,15 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151223171242) do
+ActiveRecord::Schema.define(version: 20160101173058) do
 
   create_table "auth_tokens", force: :cascade do |t|
     t.string   "email"
     t.string   "token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_auth_tokens_on_email"
-    t.index ["token"], name: "index_auth_tokens_on_token"
   end
 
   create_table "companies", force: :cascade do |t|
@@ -84,6 +82,8 @@ ActiveRecord::Schema.define(version: 20151223171242) do
     t.datetime "valid_until"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.integer  "project_id"
+    t.index ["project_id"], name: "index_offers_on_project_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -100,6 +100,8 @@ ActiveRecord::Schema.define(version: 20151223171242) do
     t.datetime "due_at"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.integer  "offer_id"
+    t.index ["offer_id"], name: "index_tasks_on_offer_id"
     t.index ["project_id"], name: "index_tasks_on_project_id"
   end
 

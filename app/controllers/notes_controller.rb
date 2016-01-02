@@ -29,9 +29,10 @@ class NotesController < ApplicationController
 
   # PATCH/PUT /notes/1
   def update
+    @note.topic = relationship_params[:topic] if relationship_params[:topic]
+    @note.contact = relationship_params[:contact] if relationship_params[:content]
+
     if @note.update(note_params)
-      @note.topic = relationship_params[:topic] if relationship_params[:topic]
-      @note.contact = relationship_params[:contact] if relationship_params[:content]
       render json: @note
     else
       render json: @note.errors, status: :unprocessable_entity
