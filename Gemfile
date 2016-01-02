@@ -3,8 +3,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '>= 5.0.0.beta1', '< 5.1'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.0'
 # Use Puma as the app server
@@ -22,6 +21,8 @@ gem 'rack-cors'
 gem 'active_model_serializers', '~> 0.10.0.rc3'
 
 group :development, :test do
+  # Use sqlite3 as the database for Active Record
+  gem 'sqlite3'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 end
@@ -35,3 +36,10 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'google-api-client', '~> 0.9.pre4'
+
+group :production do
+  gem 'pg'
+  gem 'rails_stdout_logging'
+end
+
+gem 'redis'
