@@ -17,8 +17,8 @@ class NotesController < ApplicationController
   def create
     note_klass = params[:data][:type].underscore.classify.safe_constantize
     @note = note_klass.new(note_params)
-    @note.topic = relationship_params[:topic]
-    @note.contact = relationship_params[:contact]
+    @note.topic = relationship_params[:topic] if relationship_params[:topic]
+    @note.contact = relationship_params[:contact] if relationship_params[:contact]
 
     if @note.save
       render json: @note, status: :created, location: note_url(@note)
@@ -30,7 +30,7 @@ class NotesController < ApplicationController
   # PATCH/PUT /notes/1
   def update
     @note.topic = relationship_params[:topic] if relationship_params[:topic]
-    @note.contact = relationship_params[:contact] if relationship_params[:content]
+    @note.contact = relationship_params[:contact] if relationship_params[:contact]
 
     if @note.update(note_params)
       render json: @note
