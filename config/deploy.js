@@ -29,8 +29,8 @@ module.exports = function(deployTarget) {
     ENV.build.environment = 'production';
     ENV.s3.accessKeyId = process.env.AWS_KEY;
     ENV.s3.secretAccessKey = process.env.AWS_SECRET;
-    ENV.s3.bucket = /* YOUR S3 BUCKET NAME */;
-    ENV.s3.region = /* YOUR S3 REGION */;
+    ENV.s3.bucket = 'tutsplus-relationship';
+    ENV.s3.region = 'eu-central-1';
   }
 
   if (deployTarget === 'qa') {
