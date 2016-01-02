@@ -1,6 +1,7 @@
-class RootController < ActionController::API
+class RootController < ApplicationController
   def index
-    current_revision = $redis.get('relationship:index:current')
-    render html: $redis.get("relationship:index:#{current_revision}").html_safe
+    render json: {
+      # Insert URLs to resources
+    }
   end
 end
