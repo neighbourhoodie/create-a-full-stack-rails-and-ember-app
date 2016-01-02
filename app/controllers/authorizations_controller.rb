@@ -7,7 +7,7 @@ class AuthorizationsController < ActionController::API
     client = Google::APIClient::ClientSecrets.new('web' => {
       client_id: ENV['GOOGLE_CLIENT_ID'],
       client_secret: ENV['GOOGLE_CLIENT_SECRET'],
-      redirect_uri: 'http://localhost:4200/oauth2callback'
+      redirect_uri: "#{(ENV['HEROKU_URL'] || "http://localhost:4200")}/oauth2callback"
     }).to_authorization
     client.grant_type = 'authorization_code'
     client.code = params['authorization_code']
