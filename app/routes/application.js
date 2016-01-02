@@ -1,9 +1,13 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  session: Ember.inject.service(),
+
   model: function () {
+    console.log(this.get('session.isAuthenticated'));
+
     return Ember.RSVP.hash({
-      tasks: this.store.findAll('task')
+      tasks: this.get('session.isAuthenticated') ? this.store.findAll('task') : []
     });
   },
 

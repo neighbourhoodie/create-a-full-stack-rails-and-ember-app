@@ -19,6 +19,27 @@ Router.map(function() {
     this.route('edit', { path: ':contact_id/edit' });
     this.route('new');
   });
+
+  this.route('projects', function () {
+    this.route('index', { path: '/' });
+    this.route('show', { path: ':project_id' });
+    this.route('edit', { path: ':project_id/edit' });
+    this.route('new');
+  });
+
+  this.route('offers', function () {
+    this.route('index', { path: '/' });
+    this.route('show', { path: ':project_id' });
+    this.route('edit', { path: ':project_id/edit' });
+    this.route('new');
+  });
+
+  this.route('tasks', function () {
+    this.route('index', { path: '/' });
+    this.route('show', { path: ':project_id' });
+    this.route('edit', { path: ':project_id/edit' });
+    this.route('new');
+  });
 });
 
 export default Router;
