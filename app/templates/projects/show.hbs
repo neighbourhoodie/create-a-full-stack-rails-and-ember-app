@@ -1,0 +1,5 @@
+<h3>{{model.name}}</h3>
+
+{{#task-list items=model.tasks onAddTask="addTask" as |task|}}
+  {{task.description}}
+{{/task-list}}
