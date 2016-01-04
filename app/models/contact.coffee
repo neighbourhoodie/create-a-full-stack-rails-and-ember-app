@@ -11,7 +11,13 @@ Contact = DS.Model.extend
   customerId: DS.attr 'string'
   additionalInfo: DS.attr 'string'
 
+  projects: DS.hasMany 'project'
+  offers: DS.hasMany 'offer'
   company: DS.belongsTo 'company'
+
+  fullName: (->
+    "#{@get('familyName')}, #{@get('givenNames')}"
+  ).property('familyName', 'givenNames')
 
   formattedAddress: (->
     return "" unless @get('address')

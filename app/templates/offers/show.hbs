@@ -1,0 +1,46 @@
+<p class="pull-sm-right">
+  {{#link-to "offers.new" class="btn btn-sm btn-primary"}}Add Offer{{/link-to}}
+</p>
+
+<div class="card card-block clearfix">
+  <h4 class="card-title">
+    {{model.name}}
+
+    <div class="pull-sm-right">
+      ${{model.price}}
+    </div>
+  </h4>
+  <h6 class="card-subtitle text-muted">
+    for {{#link-to "projects.show" model.project}}{{model.project.name}}{{/link-to}}
+
+    {{#if model.validUntil}}
+      <div class="pull-sm-right">
+        valid until {{moment-format model.validUntil "LL"}}
+      </div>
+    {{/if}}
+  </h6>
+  <div>
+    <div class="text-sm-right">
+      {{#link-to "offers.edit" model.id}}Edit{{/link-to}}
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        {{#task-list items=model.tasks onAddTask="addTask" as |task|}}
+          {{task.description}}
+        {{/task-list}}
+      </div>
+      <div class="col-sm-6">
+        <h6>Contacts</h6>
+
+        {{#contact-list items=model.contacts allItems=contacts onAddContact="addContact" as |contact|}}
+          {{#link-to "contacts.show" contact}}
+            {{contact.fullName}}
+          {{/link-to}}
+          {{#if contact.company}}
+            (from {{#link-to "companies.show" contact.company}}{{contact.company.name}}{{/link-to}})
+          {{/if}}
+        {{/contact-list}}
+      </div>
+    </div>
+  </div>
+</div>

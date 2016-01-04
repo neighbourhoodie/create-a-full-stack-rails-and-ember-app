@@ -1,0 +1,36 @@
+<ul class="list-unstyled">
+  <li><a href="#" {{action "addTask"}}>+ Task</a></li>
+  {{#each activeItems as |task|}}
+    <li class="task">
+      <input type="checkbox" checked={{task.isComplete}} onclick={{action "updateTask" task}}>
+      {{#if isEditing}}
+        {{#if task.isEditing}}
+          <span class="form-inline">
+            {{input
+              value=task.description
+              class="task-form-control"
+              placeholder="Describe your task..."
+              autofocus="autofocus"
+              enter="updateTaskDescription"
+              focus-out="updateTaskDescription"
+              escape-press="revertTaskDescription"
+            }}
+          </span>
+        {{else}}
+          <span {{action "editTask" task on="doubleClick"}}>{{yield task}}</span>
+        {{/if}}
+      {{else}}
+        <span {{action "editTask" task on="doubleClick"}}>{{yield task}}</span>
+      {{/if}}
+    </li>
+  {{/each}}
+</ul>
+
+<ul class="list-unstyled completed-tasks">
+  {{#each completedItems as |task|}}
+    <li class="task">
+      <input type="checkbox" checked={{task.isComplete}} onclick={{action "updateTask" task}}>
+      {{yield task}}
+    </li>
+  {{/each}}
+</ul>

@@ -1,0 +1,10 @@
+<select {{action 'change' on='change'}} class="form-control c-select">
+  {{#if emptyValueDescription}}
+    <option selected={{is-equal null selected}}>{{emptyValueDescription}}</option>
+  {{/if}}
+  {{#each content key="@index" as |item|}}
+    <option selected={{is-equal item selected}}>
+      {{yield item}}
+    </option>
+  {{/each}}
+</select>

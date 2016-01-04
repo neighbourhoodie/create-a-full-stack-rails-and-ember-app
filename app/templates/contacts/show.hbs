@@ -3,7 +3,7 @@
   <a class="btn btn-sm btn-danger" href="#" {{action "delete" model}}>Delete</a>
 </p>
 
-<h3>{{model.familyName}}, {{model.givenNames}}</h3>
+<h3>{{model.fullName}}</h3>
 {{#if model.company}}
   <p>
     <em>{{model.title}}</em>
@@ -53,3 +53,22 @@
   {{model.additionalInfo}}
 </p>
 {{/if}}
+
+<div class="row">
+  <div class="col-sm-6">
+    <h6>Projects</h6>
+    {{#each model.projects as |project index| }}
+      {{if index ", "}}{{#link-to 'projects.show' project}}{{project.name}}{{/link-to}}
+    {{else}}
+      <em>No projects</em>
+    {{/each}}
+  </div>
+  <div class="col-sm-6">
+    <h6>Offers</h6>
+    {{#each model.offers as |offer index| }}
+      {{if index ", "}}{{#link-to 'offers.show' offer}}{{offer.name}}{{/link-to}}
+    {{else}}
+      <em>No offers</em>
+    {{/each}}
+  </div>
+</div>

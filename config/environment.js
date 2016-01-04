@@ -27,7 +27,7 @@ module.exports = function(environment) {
       }
     },
 
-    apiHost: 'http://localhost:3000',
+    apiHost: 'http://localhost:3000/api',
 
     contentSecurityPolicy: {
       'default-src': "'none'",

@@ -1,8 +1,0 @@
-<select {{action 'change' on='change'}} class="form-control c-select">
-  <option selected={{is-equal null selected}}>No Company</option>
-  {{#each content key="@index" as |company|}}
-    <option selected={{is-equal company selected}}>
-      {{company.name}}
-    </option>
-  {{/each}}
-</select>

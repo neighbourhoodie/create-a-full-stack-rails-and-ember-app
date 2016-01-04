@@ -1,0 +1,10 @@
+<h3>Tasks</h3>
+
+{{#task-list items=model.tasks onAddTask="addTask" as |task|}}
+  {{#if task.project}}
+    <strong>[{{task.project.shortCode}}]</strong>
+  {{else if task.offer}}
+    <em>[{{task.offer.name}}]</em>
+  {{/if}}
+  {{task.description}}
+{{/task-list}}

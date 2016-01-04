@@ -1,0 +1,36 @@
+<h3>{{model.name}}</h3>
+
+<div class="row">
+  <div class="col-sm-7">
+    <h5>Tasks</h5>
+
+    {{#task-list items=model.tasks onAddTask="addTask" as |task|}}
+      {{task.description}}
+    {{/task-list}}
+  </div>
+  <div class="col-sm-5">
+    <h5>Contacts</h5>
+
+    {{#contact-list items=model.contacts allItems=contacts onAddContact="addContact" as |contact|}}
+      {{#link-to "contacts.show" contact}}
+        {{contact.fullName}}
+      {{/link-to}}
+      {{#if contact.company}}
+        (from {{#link-to "companies.show" contact.company}}{{contact.company.name}}{{/link-to}})
+      {{/if}}
+    {{/contact-list}}
+
+    <hr>
+
+    <p class="pull-xs-right">
+      {{#link-to 'offers.new'}}Add Offer{{/link-to}}
+    </p>
+    <h5 class="clearfix">Offers</h5>
+
+    {{#each model.offers as |offer|}}
+      <p>
+        {{#link-to 'offers.show' offer}}{{offer.name}}{{/link-to}}
+        for <em>${{offer.price}}</em></p>
+    {{/each}}
+  </div>
+</div>

@@ -23,13 +23,13 @@
           {{#link-to 'companies' class='nav-link'}}Companies{{/link-to}}
         </li>
         <li class="nav-item">
-          {{#link-to 'application' class='nav-link'}}Projects{{/link-to}}
+          {{#link-to 'projects' class='nav-link'}}Projects{{/link-to}}
         </li>
         <li class="nav-item">
-          {{#link-to 'application' class='nav-link'}}Offers{{/link-to}}
+          {{#link-to 'offers' class='nav-link'}}Offers{{/link-to}}
         </li>
         <li class="nav-item">
-          {{#link-to 'application' class='nav-link'}}Tasks{{/link-to}}
+          {{#link-to 'tasks' class='nav-link'}}Tasks{{/link-to}}
         </li>
       </ul>
     </nav>
@@ -37,7 +37,14 @@
       {{outlet}}
     </section>
     <aside class="col-sm-3">
-      <!-- Task list, etc. -->
+      {{#immutable-task-list items=persistedTasks showCompleted=false as |task|}}
+        {{#if task.project}}
+          <strong>[{{task.project.shortCode}}]</strong>
+        {{else if task.offer}}
+          <em>[{{task.offer.shortCode}}]</em>
+        {{/if}}
+        {{task.description}}
+      {{/immutable-task-list}}
     </aside>
   </div>
 </div>

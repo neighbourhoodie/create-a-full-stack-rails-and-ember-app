@@ -10,11 +10,15 @@
 
   <div class="form-group row">
     <div class="col-sm-6">
-      {{company-select
+      {{#collection-select
         content=companies
         selected=model.company
+        noValueDescription="No Company"
         action=(action (mut model.company))
+        as |item|
       }}
+        {{item.name}}
+      {{/collection-select}}
     </div>
     <div class="col-sm-6">
       {{input class="form-control" placeholder="Title" value=model.title}}

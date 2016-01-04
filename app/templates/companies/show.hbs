@@ -60,7 +60,7 @@
   <tbody>
     {{#each model.contacts as |contact|}}
       <tr>
-        <td>{{#link-to 'contacts.show' contact.id}}{{contact.familyName}}, {{contact.givenNames}}{{/link-to}}</td>
+        <td>{{#link-to 'contacts.show' contact.id}}{{contact.fullName}}{{/link-to}}</td>
         <td>{{contact.title}}</td>
         <td>{{contact.phone}}</td>
         <td>{{contact.email}}</td>
