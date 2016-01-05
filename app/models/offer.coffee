@@ -1,6 +1,7 @@
 `import DS from 'ember-data'`
+`import Topic from 'relationship/models/topic'`
 
-Offer = DS.Model.extend
+Offer = Topic.extend
   name: DS.attr 'string'
   status: DS.attr 'string'
   price: DS.attr 'number'
@@ -9,6 +10,7 @@ Offer = DS.Model.extend
   contacts: DS.hasMany 'contact'
   tasks: DS.hasMany 'task'
   project: DS.belongsTo 'project'
+  notes: DS.hasMany 'note'
 
   shortCode: (->
     initials = @getWithDefault('name', '').match(/\b(\w)/g)
