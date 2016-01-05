@@ -61,7 +61,10 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
+    ENV.apiHost = "https://stark-taiga-1325.herokuapp.com/api";
 
+    ENV.torii.providers["google-oauth2"].redirectUri = "https://stark-taiga-1325.herokuapp.com/oauth2callback";
+    ENV.torii.providers["google-oauth2"].apiKey = "942171989971-orpfnmbskoef1la88r8g1j2dqdveduck.apps.googleusercontent.com";
   }
 
   return ENV;
