@@ -1,0 +1,38 @@
+<p class="pull-sm-right">
+  {{#link-to "offers.new" class="btn btn-sm btn-primary"}}Add Offer{{/link-to}}
+</p>
+
+<h3>Offers</h3>
+
+<div class="clearfix"></div>
+
+{{#offer-list items=model as |offer|}}
+  {{#offer-list-item item=offer as |item|}}
+    <div class="card card-block clearfix">
+      <h4 class="card-title">
+        {{item.name}}
+
+        <div class="pull-sm-right">
+          ${{item.price}}
+        </div>
+      </h4>
+      <h6 class="card-subtitle text-muted">
+        for {{#link-to "projects.show" item.project}}{{item.project.name}}{{/link-to}}
+
+        {{#if item.validUntil}}
+          <div class="pull-sm-right">
+            valid until {{moment-format item.validUntil "LL"}}
+          </div>
+        {{/if}}
+      </h6>
+      <div>
+        <div class="text-sm-right">
+          {{#link-to "offers.edit" item.id}}Edit{{/link-to}}
+        </div>
+        {{#immutable-task-list items=item.tasks as |task|}}
+          {{task.description}}
+        {{/immutable-task-list}}
+      </div>
+    </div>
+  {{/offer-list-item}}
+{{/offer-list}}

@@ -1,0 +1,14 @@
+{{#each activeItems as |task|}}
+  <li class="task {{if task.isComplete 'completed'}}">
+    <input type="checkbox" checked={{task.isComplete}} onclick={{action "updateTask" task}}>
+    {{yield task}}
+  </li>
+{{/each}}
+{{#if showCompleted}}
+  {{#each completedItems as |task|}}
+    <li class="task completed-tasks">
+      <input type="checkbox" checked={{task.isComplete}} onclick={{action "updateTask" task}}>
+      {{yield task}}
+    </li>
+  {{/each}}
+{{/if}}

@@ -1,0 +1,74 @@
+<p class="pull-sm-right">
+  {{#link-to "contacts.edit" model.id class="btn btn-sm btn-primary"}}Edit{{/link-to}}
+  <a class="btn btn-sm btn-danger" href="#" {{action "delete" model}}>Delete</a>
+</p>
+
+<h3>{{model.fullName}}</h3>
+{{#if model.company}}
+  <p>
+    <em>{{model.title}}</em>
+    at {{#link-to 'companies.show' model.company}}{{model.company.name}}{{/link-to}}
+  </p>
+{{/if}}
+
+<hr style="clear:both">
+
+<div class="row">
+  {{#if model.formattedAddress}}
+    <div class="col-sm-6">
+        <p style="padding-left: 1.25em;">
+          <i class="fa fa-envelope" style="margin-left: -1.25em;"></i>
+          {{model.formattedAddress}}
+        </p>
+    </div>
+  {{/if}}
+  <div class="col-sm-6">
+    <p>
+      {{#if model.phone}}<div class="contact-phone">
+        <i class="fa fa-phone"></i>
+        <a href="tel:{{{model.phone}}}">{{model.phone}}</a>
+      </div>{{/if}}
+      {{#if model.email}}<div class="contact-email">
+        <i class="fa fa-at"></i>
+        <a href="mailto:{{{model.email}}}">{{model.email}}</a>
+      </div>{{/if}}
+      {{#if model.website}}<div class="contact-website">
+        <i class="fa fa-globe"></i>
+        <a href="http://{{{model.website}}}" target="_blank">{{model.website}}</a>
+      </div>{{/if}}
+    </p>
+  </div>
+</div>
+
+{{#if model.customerId}}
+<p>
+  <strong>External ID:</strong>
+  {{model.customerId}}
+</p>
+{{/if}}
+
+{{#if model.additionalInfo}}
+<p>
+  <strong>Additional Info:</strong>
+  {{model.additionalInfo}}
+</p>
+{{/if}}
+
+<div class="row">
+  <div class="col-sm-6">
+    <h6>Projects</h6>
+    {{#each model.projects as |project index| }}
+      {{if index ", "}}{{#link-to 'projects.show' project}}{{project.name}}{{/link-to}}
+    {{else}}
+      <em>No projects</em>
+    {{/each}}
+  </div>
+  <div class="col-sm-6">
+    <h6>Offers</h6>
+    {{#each model.offers as |offer index| }}
+      {{if index ", "}}{{#link-to 'offers.show' offer}}{{offer.name}}{{/link-to}}
+    {{else}}
+      <em>No offers</em>
+    {{/each}}
+  </div>
+</div>

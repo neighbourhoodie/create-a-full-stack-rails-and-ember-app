@@ -1,0 +1,7 @@
+{{#each items as |item|}}
+  {{yield item}}
+{{else}}
+  <div class="col-sm-12 offer-list-item">
+    <em>You have no offers.</em>
+  </div>
+{{/each}}

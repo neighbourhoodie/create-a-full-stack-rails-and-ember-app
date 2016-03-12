@@ -1,0 +1,36 @@
+<form>
+  <h3>{{input class="form-control" placeholder="Name" value=model.name}}</h3>
+
+  <p>
+    {{textarea class="form-control" placeholder="Address" rows="3" value=model.address}}
+  </p>
+
+  <hr>
+
+  <p>
+    {{input class="form-control" placeholder="Phone" value=model.phone}}
+  </p>
+
+  <p>
+    {{input class="form-control" placeholder="Email" value=model.email}}
+  </p>
+
+  <p>
+    {{input class="form-control" placeholder="Website" value=model.website}}
+  </p>
+
+  <hr>
+
+  <p>
+    {{input class="form-control" placeholder="External ID" value=model.customerId}}
+  </p>
+
+  <p>
+    {{textarea class="form-control" placeholder="Additional Info" value=model.additionalInfo}}
+  </p>
+
+  <p>
+    <button type="submit" class="btn btn-success" {{action "save"}}>Create</button>
+    <button class="btn btn-default" {{action "cancel"}}>Cancel</button>
+  </p>
+</form>

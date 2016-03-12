@@ -6,10 +6,16 @@
 
 # Ignore bundler config.
 /.bundle
+# compiled output
+/dist
+/tmp
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-journal
+# dependencies
+/node_modules
+/bower_components
 
 # Ignore all logfiles and tempfiles.
 /log/*
@@ -19,3 +25,10 @@
 
 # Ignore Byebug command history file.
 .byebug_history
+# misc
+/.sass-cache
+/connect.lock
+/coverage/*
+/libpeerconnection.log
+npm-debug.log
+testem.log

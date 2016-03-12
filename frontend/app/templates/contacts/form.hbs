@@ -1,0 +1,64 @@
+<form>
+  <div class="form-group row">
+    <div class="col-sm-6">
+      {{input class="form-control" placeholder="Family Name" value=model.familyName}}
+    </div>
+    <div class="col-sm-6">
+      {{input class="form-control" placeholder="Given Names" value=model.givenNames}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-6">
+      {{#collection-select
+        content=companies
+        selected=model.company
+        noValueDescription="No Company"
+        action=(action (mut model.company))
+        as |item|
+      }}
+        {{item.name}}
+      {{/collection-select}}
+    </div>
+    <div class="col-sm-6">
+      {{input class="form-control" placeholder="Title" value=model.title}}
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="form-group">
+    {{textarea class="form-control" placeholder="Address" rows="3" value=model.address}}
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-6">
+      {{input class="form-control" placeholder="Phone" value=model.phone}}
+    </div>
+    <div class="col-sm-6">
+      {{input class="form-control" placeholder="Email" value=model.email}}
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="form-group row">
+    <div class="col-sm-6">
+      {{input class="form-control" placeholder="External ID" value=model.customerId}}
+    </div>
+    <div class="col-sm-6">
+      {{input class="form-control" placeholder="Website" value=model.website}}
+    </div>
+  </div>
+
+  <div class="form-group">
+    {{textarea class="form-control" placeholder="Additional Info" value=model.additionalInfo}}
+  </div>
+
+  <p>
+    <button type="submit" class="btn btn-success" {{action "save"}}>
+      {{#if model.isNew}}Create{{else}}Update{{/if}}
+    </button>
+    <button class="btn btn-default" {{action "cancel"}}>Cancel</button>
+  </p>
+</form>

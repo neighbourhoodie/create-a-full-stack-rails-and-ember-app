@@ -1,0 +1,32 @@
+@import "../../bower_components/bootstrap/scss/bootstrap-flex";
+
+body {
+  background: #DDD;
+}
+
+.main-wrapper {
+  background: #FFF;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.35);
+}
+
+.completed-tasks {
+  color: #CCC;
+  text-decoration: line-through;
+}
+
+.task.completed {
+  color: #CCC;
+  text-decoration: line-through;
+}
+
+.task-form-control {
+  border: none;
+  background: #EFEFEF;
+  padding: 0;
+  outline: 0;
+
+  &::-webkit-input-placeholder {
+    color: #666;
+  }
+}

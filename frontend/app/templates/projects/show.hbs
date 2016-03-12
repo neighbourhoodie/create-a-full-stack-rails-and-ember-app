@@ -1,0 +1,87 @@
+<h3>{{model.name}}</h3>
+
+<div class="row">
+  <div class="col-sm-7">
+    <h5>Tasks</h5>
+
+    {{#task-list items=model.tasks onAddTask="addTask" as |task|}}
+      {{task.description}}
+    {{/task-list}}
+  </div>
+  <div class="col-sm-5">
+    <h5>Contacts</h5>
+
+    {{#contact-list items=model.contacts allItems=contacts onAddContact="addContact" as |contact|}}
+      {{#link-to "contacts.show" contact}}
+        {{contact.fullName}}
+      {{/link-to}}
+      {{#if contact.company}}
+        (from {{#link-to "companies.show" contact.company}}{{contact.company.name}}{{/link-to}})
+      {{/if}}
+    {{/contact-list}}
+
+    <hr>
+
+    <p class="pull-xs-right">
+      {{#link-to 'offers.new'}}Add Offer{{/link-to}}
+    </p>
+    <h5 class="clearfix">Offers</h5>
+
+    {{#each model.offers as |offer|}}
+      <p>
+        {{#link-to 'offers.show' offer}}{{offer.name}}{{/link-to}}
+        for <em>${{offer.price}}</em></p>
+    {{/each}}
+  </div>
+</div>
+
+<hr>
+
+<form {{action "addNote" on="submit"}}>
+  <div class="row">
+    <div class="col-sm-4 form-group">
+      <select class="form-control c-select" id="change_note_type" {{action "changeNoteType" on="change"}}>
+        <option value="general-note">General Note</option>
+        <option value="phone-call">Phone Call</option>
+        <option value="personal-conversation">Personal Conversation</option>
+        <option value="email-message">Email Message</option>
+      </select>
+    </div>
+    <div class="col-sm-8 form-group">
+      {{input placeholder="Title" class="form-control" value=newNoteTitle}}
+    </div>
+  </div>
+  <div class="form-group">
+    {{textarea placeholder="Content" class="form-control" rows="5" value=newNoteDescription}}
+  </div>
+  <div class="row">
+    <div class="col-sm-6 form-group">
+      {{#if noteTypeAllowsContacts}}
+        {{#collection-select content=contacts emptyValueDescription="Select Contact"
+        action=(action (mut newNoteContact)) as |item|}}
+          {{item.fullName}}
+        {{/collection-select}}
+      {{/if}}
+    </div>
+    <div class="col-sm-6 text-sm-right">
+      <button type="submit" class="btn btn-primary">Add Note</button>
+    </div>
+  </div>
+</form>
+
+{{#each notesByNewest as |note|}}
+  <hr>
+  <div>
+    <div class="pull-sm-right">
+      {{moment-format note.createdAt "LL"}}
+      (<a href="#" {{action "deleteNote" note}}>Delete</a>)
+    </div>
+
+    <h6>{{note.title}}</h6>
+    {{#if note.contact}}
+      <p><em>with {{#link-to "contacts.show" note.contact}}{{note.contact.fullName}}{{/link-to}}</em></p>
+    {{/if}}
+    <div class="clearfix"></div>
+    <p>{{note.description}}</p>
+  </div>
+{{/each}}
