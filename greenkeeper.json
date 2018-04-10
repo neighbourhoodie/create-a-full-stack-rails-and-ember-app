@@ -1,7 +1,7 @@
 {
   "groups": {
     "default": {
-      "packages": [
+      "frontend": [
         "frontend/package.json"
       ]
     }
