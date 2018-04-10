@@ -1,9 +1,3 @@
 {
-  "groups": {
-    "frontend": {
-      "packages": [
-        "frontend/package.json"
-      ]
-    }
-  }
+  "ignore": ["torii"]
 }
