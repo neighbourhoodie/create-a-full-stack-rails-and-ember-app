@@ -3,7 +3,7 @@
     "torii"
   ],
   "groups": {
-    "frontend": {
+    "ui": {
       "packages": [
         "frontend/package.json"
       ]
