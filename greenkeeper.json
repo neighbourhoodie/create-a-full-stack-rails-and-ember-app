@@ -2,7 +2,8 @@
   "groups": {
     "default": {
       "packages": [
-        "frontend/package.json"
+        "frontend/package.json",
+        "package.json"
       ]
     }
   }
