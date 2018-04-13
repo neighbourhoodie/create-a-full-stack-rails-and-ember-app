@@ -1,8 +1,13 @@
 {
   "groups": {
-    "default": {
+    "bubblegum": {
       "packages": [
         "frontend/package.json",
+        "package.json"
+      ]
+    },
+    "troublegum": {
+      "packages": [
         "package.json"
       ]
     }
