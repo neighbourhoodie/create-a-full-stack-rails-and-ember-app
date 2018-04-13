@@ -1,0 +1,26 @@
+{
+  "name": "relationship",
+  "version": "0.0.0",
+  "description": "Small description for relationship goes here",
+  "private": true,
+  "directories": {
+    "doc": "doc",
+    "test": "tests"
+  },
+  "scripts": {
+    "build": "ember build",
+    "start": "ember server",
+    "test": "echo 'yay test'"
+  },
+  "repository": "",
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "broccoli-asset-rev": "^2.2.0",
+    "neighbourhoodie-test-package": "^12.0.0",
+    "torii": "0.10.1"
+  }
+}
