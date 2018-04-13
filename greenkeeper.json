@@ -1,1 +1,16 @@
-{}
+{
+  "groups": {
+    "bubblegum": {
+      "packages": [
+        "frontend/package.json",
+        "package.json"
+      ]
+    },
+    "troublegum": {
+      "packages": [
+        "package.json",
+        "non-existing/package.json"
+      ]
+    }
+  }
+}
