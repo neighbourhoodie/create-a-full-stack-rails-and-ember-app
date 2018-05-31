@@ -1,19 +1,24 @@
 ---
 language: node_js
 node_js:
-  - "4"
+  - "6"
+  - "8"
 
 sudo: false
 
-cache:
-  directories:
-    - node_modules
+cache: false
 
 before_install:
-  - "cd frontend"
-
+  - npm i -g npm
+  - cd frontend
+  
+before_install:
+  - npm install -g npm
+  - npm install -g greenkeeperio/greenkeeper-lockfile#feat/monorepos
 install:
-  - "echo npm install --lol"
+  - npm install
+before_script: greenkeeper-lockfile-update
+after_script: greenkeeper-lockfile-upload
 
 script:
   - npm test
