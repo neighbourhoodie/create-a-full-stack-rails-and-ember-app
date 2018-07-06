@@ -20,7 +20,7 @@
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.2.0",
-    "neighbourhoodie-test-package": "^15.0.0",
+    "neighbourhoodie-test-package": "^36.1.0",
     "torii": "0.10.1"
   }
 }
