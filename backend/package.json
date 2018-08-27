@@ -19,8 +19,14 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "broccoli-asset-rev": "^2.2.0",
-    "neighbourhoodie-test-package": "^12.0.0",
+    "broccoli-asset-rev": "2.2.0",
+    "neighbourhoodie-test-package": "12.0.0",
     "torii": "0.10.1"
+  },
+  "dependencies": {
+    "gk-test-a": "2.2.0",
+    "gk-test-b": "2.2.0",
+    "gk-test-c": "2.2.0",
+    "neighbourhoodie-test-package": "12.0.0"
   }
 }
